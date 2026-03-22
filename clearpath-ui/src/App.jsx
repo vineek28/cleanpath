@@ -3566,7 +3566,7 @@ function PatientTabView({ data }) {
     let pc=0; const ci=setInterval(()=>{ pc+=2; setPdfPct(Math.min(pc,90)); if(pc>=90) clearInterval(ci) },60)
     try {
       const endpoint = type==='full' ? '/api/patients/report/pdf' : '/api/patients/rights-card/pdf'
-      const res = await fetch(`http://localhost:8000${endpoint}`, {
+      const res = await fetch(`${API}${endpoint}`, {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({enc: {

@@ -4,14 +4,15 @@ Every scan is logged with full inputs, outputs, and timestamps.
 HIPAA-aware: no patient PII stored, only de-identified compliance metadata.
 """
 import sqlite3
+from services.db import get_conn, q, DB_PATH as _DB_PATH
 import json
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent / "clearpath_audit.db"
 
-def _get_conn():
+
+def _get_conn():  # legacy — kept for local SQLite fallback
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn

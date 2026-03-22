@@ -1,3 +1,4 @@
+from services.db import get_conn, q, DB_PATH
 """
 ClearPath Synthetic Patient Data Generator
 ==========================================
@@ -331,7 +332,7 @@ def generate_patients(hospital_npi: str, hospital_name: str, hospital_type: str,
 
 def init_patient_tables():
     """Create patient encounter tables in SQLite."""
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS patient_encounters (
                 id TEXT PRIMARY KEY,
@@ -421,7 +422,7 @@ def seed_hospital_patients(hospital_npi: str, hospital_name: str, hospital_type:
     patients = generate_patients(hospital_npi, hospital_name, hospital_type, n)
     batch_id = str(uuid.uuid4())
 
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         # Clear existing patients for this hospital (fresh seed)
         conn.execute("DELETE FROM patient_encounters WHERE hospital_npi = ?", (hospital_npi,))
 
@@ -484,8 +485,7 @@ def seed_hospital_patients(hospital_npi: str, hospital_name: str, hospital_type:
 def get_hospital_patients(hospital_npi: str) -> list:
     """Get all patient encounters for a hospital."""
     init_patient_tables()
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
+    with get_conn() as conn:
         rows = conn.execute(
             "SELECT * FROM patient_encounters WHERE hospital_npi = ? ORDER BY admission_date DESC",
             (hospital_npi,)
@@ -496,8 +496,7 @@ def get_hospital_patients(hospital_npi: str) -> list:
 def get_batch_history(hospital_npi: str) -> list:
     """Get batch run history for a hospital."""
     init_patient_tables()
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
+    with get_conn() as conn:
         rows = conn.execute(
             "SELECT * FROM batch_runs WHERE hospital_npi = ? ORDER BY run_at DESC LIMIT 10",
             (hospital_npi,)

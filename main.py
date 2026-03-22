@@ -651,6 +651,7 @@ async def triage(hospital_npi: str):
 
 import random
 import sqlite3
+from services.db import get_conn, q
 
 DB_PATH = Path(__file__).parent / "clearpath_audit.db"
 
@@ -661,7 +662,7 @@ class PatientRequestBody(BaseModel):
     request_type: str = "human_review"
 
 def _ensure_patient_requests_table():
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         conn.execute("""
             CREATE TABLE IF NOT EXISTS patient_requests (
                 id TEXT PRIMARY KEY,
@@ -684,7 +685,7 @@ async def request_human_review(body: PatientRequestBody):
     from datetime import datetime, timezone
     ticket_id = f"REQ-{random.randint(10000, 99999)}"
     req_id = str(uuid.uuid4())
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         conn.execute("""
             INSERT INTO patient_requests (id, ticket_id, mrn, adm_id, patient_name, request_type, status, created_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -706,7 +707,7 @@ async def request_ai_explanation(body: PatientRequestBody):
     from datetime import datetime, timezone
     ticket_id = f"EXP-{random.randint(10000, 99999)}"
     req_id = str(uuid.uuid4())
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         conn.execute("""
             INSERT INTO patient_requests (id, ticket_id, mrn, adm_id, patient_name, request_type, status, created_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)

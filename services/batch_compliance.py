@@ -14,8 +14,7 @@ import json
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-
-DB_PATH = Path(__file__).parent.parent / "clearpath_audit.db"
+from services.db import get_conn, q, DB_PATH
 
 # ── Compliance Rules ──────────────────────────────────────────────────────────
 # Each rule: tool → requirement → law → action
@@ -123,7 +122,7 @@ COMPLIANCE_RULES = [
 
 def _ensure_workflow_columns():
     """Ensure workflow columns exist — safe to call multiple times."""
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         for col, default in [
             ('workflow_status', "'needs_review'"),
             ('workflow_note', "''"),
@@ -142,8 +141,7 @@ def run_batch_compliance(hospital_npi: str, confirmed_tools: list = None) -> dic
     Run rule-based compliance check on all patient encounters for a hospital.
     Returns compliance findings per patient — no Claude required.
     """
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
+    with get_conn() as conn:
         patients = conn.execute(
             "SELECT * FROM patient_encounters WHERE hospital_npi = ?",
             (hospital_npi,)
@@ -237,7 +235,7 @@ def run_batch_compliance(hospital_npi: str, confirmed_tools: list = None) -> dic
             summary["disclosure_required"] += 1
 
     # Store results in DB
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         conn.execute("""
             CREATE TABLE IF NOT EXISTS batch_compliance_results (
                 id TEXT PRIMARY KEY,
@@ -310,8 +308,7 @@ def run_batch_compliance(hospital_npi: str, confirmed_tools: list = None) -> dic
 
 def get_delta(hospital_npi: str) -> dict:
     """Compare latest two compliance snapshots to show what changed."""
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
+    with get_conn() as conn:
         try:
             snapshots = conn.execute("""
                 SELECT * FROM compliance_snapshots
@@ -341,8 +338,7 @@ def get_delta(hospital_npi: str) -> dict:
 
 def get_patient_by_mrn(hospital_npi: str, mrn: str) -> dict:
     """Look up a patient encounter by MRN — used by patient login."""
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
+    with get_conn() as conn:
         try:
             row = conn.execute("""
                 SELECT pe.*, bcr.findings_json, bcr.compliance_score, bcr.needs_claude_analysis
@@ -361,7 +357,7 @@ def get_patient_by_mrn(hospital_npi: str, mrn: str) -> dict:
 
 def get_disclosure_count(hospital_npi: str) -> int:
     """Count patients needing disclosure — for results page summary."""
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         try:
             row = conn.execute("""
                 SELECT COUNT(*) FROM batch_compliance_results
@@ -378,7 +374,7 @@ def update_patient_status(patient_id: str, status: str, note: str = '') -> bool:
     if status not in valid:
         return False
     _ensure_workflow_columns()
-    with sqlite3.connect(DB_PATH) as conn:
+    with get_conn() as conn:
         conn.execute("""
             UPDATE patient_encounters
             SET workflow_status = ?, workflow_note = ?, status_updated_at = ?
@@ -390,8 +386,7 @@ def update_patient_status(patient_id: str, status: str, note: str = '') -> bool:
 def get_triage_summary(hospital_npi: str) -> dict:
     """Get triage counts for action queues."""
     _ensure_workflow_columns()
-    with sqlite3.connect(DB_PATH) as conn:
-        conn.row_factory = sqlite3.Row
+    with get_conn() as conn:
         rows = conn.execute("""
             SELECT risk_level, workflow_status, disclosure_status, admission_date, id
             FROM patient_encounters WHERE hospital_npi = ?

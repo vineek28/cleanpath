@@ -1,35 +1,143 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 // ── Demo credentials ──────────────────────────────────────────────────────
-// NPI_REGISTRY is only used for the patient hospital search suggestions.
-// All actual NPI validation hits the live CMS NPPES API.
-const NPI_REGISTRY = {}
+// NPI_REGISTRY: fallback when CMS NPPES API is unreachable.
+// Hospital login NPI → hospital info. Patient login hospital picker.
+const NPI_REGISTRY = {
+  '1881018208': { hospital: 'Memorial General Hospital',  city: 'Houston, TX',      type: 'Academic Medical Center', address: '6565 Fannin St, Houston, TX 77030'          },
+  '1376412986': { hospital: 'Mayo Clinic',                city: 'Rochester, MN',    type: 'Academic Medical Center', address: '200 First St SW, Rochester, MN 55905'        },
+  '1003835780': { hospital: 'Cedars-Sinai Medical Center',city: 'Los Angeles, CA',  type: 'Academic Medical Center', address: '8700 Beverly Blvd, Los Angeles, CA 90048'    },
+}
 
+// Hospital staff login credentials
+// employeeId + password → access hospital compliance dashboard
 const HOSPITAL_USERS = [
-  { npi: '1881018208', employeeId: 'EMP-00001', password: 'demo1234',      name: 'Demo Administrator', role: 'Chief Compliance Officer' },
-  { npi: '1497758544', employeeId: 'EMP-00142', password: 'demo1234',      name: 'Dr. Sarah Mitchell', role: 'VP of Regulatory Affairs'  },
+  { npi: '1881018208', employeeId: 'EMP-00001', password: 'demo1234',  name: 'Demo Administrator',   role: 'Chief Compliance Officer'    },
+  { npi: '1881018208', employeeId: 'EMP-00142', password: 'demo1234',  name: 'Dr. Sarah Mitchell',   role: 'VP of Regulatory Affairs'    },
+  { npi: '1376412986', employeeId: 'EMP-MAYO1', password: 'mayo1234',  name: 'Dr. James Harrington', role: 'Chief AI Officer'            },
+  { npi: '1003835780', employeeId: 'EMP-CED01', password: 'cedar1234', name: 'Dr. Lisa Chen',        role: 'Chief Compliance Officer'    },
 ]
+
+// Patient records — fully self-contained for offline/no-backend demo.
+// Each encounter has all fields the patient dashboard needs.
 const PATIENT_REGISTRY = {
+
+  // ── Alex Johnson — Memorial General + Cedars-Sinai ──────────────────────
   'MRN-20847': {
-    name: 'Alex Johnson', dob: '1985-03-14', password: 'patient123',
+    name: 'Alex Johnson', dob: '1985-03-14', gender: 'M', password: 'patient123',
     encounters: [
-      { id: 'ADM-10042', date: '2025-11-14', reason: 'Pneumonia — 3-day inpatient stay',        hospital_npi: '1881018208' },
-      { id: 'ADM-10031', date: '2025-08-02', reason: 'Outpatient cardiac monitoring',           hospital_npi: '1881018208' },
-      { id: 'ADM-09918', date: '2024-12-19', reason: 'Emergency — acute appendicitis surgery',  hospital_npi: '1003835780' },
-    ]
+      {
+        id: 'ADM-10042', adm_id: 'ADM-10042',
+        date: '2025-11-14', admission_date: '2025-11-14', discharge_date: '2025-11-17',
+        reason: 'Pneumonia — 3-day inpatient stay',
+        icd10_desc: 'Pneumonia, unspecified organism', drg_code: '193', drg: '193',
+        department: 'Pulmonology', los_days: 3, los: 3, risk_level: 'high',
+        hospital_npi: '1881018208', hospital_name: 'Memorial General Hospital',
+        ai_tools: ['epic_sepsis_model', 'billing_coding_ai', 'nuance_dax'],
+        governance_gaps: [
+          'No patient disclosure form on file for ambient documentation AI',
+          'Sepsis model demographic bias report overdue — Q3 filing missing',
+        ],
+      },
+      {
+        id: 'ADM-10031', adm_id: 'ADM-10031',
+        date: '2025-08-02', admission_date: '2025-08-02', discharge_date: '2025-08-02',
+        reason: 'Outpatient cardiac monitoring',
+        icd10_desc: 'Cardiac arrhythmia, unspecified', drg_code: '309', drg: '309',
+        department: 'Cardiology', los_days: 1, los: 1, risk_level: 'medium',
+        hospital_npi: '1881018208', hospital_name: 'Memorial General Hospital',
+        ai_tools: ['ehr_predictive_analytics', 'billing_coding_ai'],
+        governance_gaps: [
+          'No patient disclosure policy for EHR predictive analytics',
+        ],
+      },
+      {
+        id: 'ADM-09918', adm_id: 'ADM-09918',
+        date: '2024-12-19', admission_date: '2024-12-19', discharge_date: '2024-12-21',
+        reason: 'Emergency — acute appendicitis surgery',
+        icd10_desc: 'Acute appendicitis without abscess', drg_code: '341', drg: '341',
+        department: 'Emergency / Surgery', los_days: 2, los: 2, risk_level: 'critical',
+        hospital_npi: '1003835780', hospital_name: 'Cedars-Sinai Medical Center',
+        ai_tools: ['chatgpt_clinical', 'billing_coding_ai', 'radiology_ai_cad'],
+        governance_gaps: [
+          'ChatGPT used in clinical context without a HIPAA BAA — potential breach',
+          'No FDA 510(k) clearance documentation on file for radiology CADe tool',
+        ],
+      },
+    ],
   },
+
+  // ── Demo Patient — Memorial General ─────────────────────────────────────
   'MRN-99001': {
-    name: 'Demo Patient', dob: '1990-07-22', password: 'demo1234',
+    name: 'Demo Patient', dob: '1990-07-22', gender: 'F', password: 'demo1234',
     encounters: [
-      { id: 'ADM-00101', date: '2025-10-05', reason: 'Routine hip replacement surgery',         hospital_npi: '1881018208' },
-      { id: 'ADM-00098', date: '2025-06-18', reason: 'Sepsis monitoring — ICU stay 5 days',    hospital_npi: '1881018208' },
-    ]
+      {
+        id: 'ADM-00101', adm_id: 'ADM-00101',
+        date: '2025-10-05', admission_date: '2025-10-05', discharge_date: '2025-10-07',
+        reason: 'Routine hip replacement surgery',
+        icd10_desc: 'Primary osteoarthritis, bilateral hip', drg_code: '470', drg: '470',
+        department: 'Orthopedic Surgery', los_days: 2, los: 2, risk_level: 'medium',
+        hospital_npi: '1881018208', hospital_name: 'Memorial General Hospital',
+        ai_tools: ['billing_coding_ai', 'ehr_predictive_analytics', 'nuance_dax'],
+        governance_gaps: [
+          'Ambient documentation AI active — patient consent form not on file',
+        ],
+      },
+      {
+        id: 'ADM-00098', adm_id: 'ADM-00098',
+        date: '2025-06-18', admission_date: '2025-06-18', discharge_date: '2025-06-23',
+        reason: 'Sepsis monitoring — ICU stay 5 days',
+        icd10_desc: 'Sepsis, unspecified organism', drg_code: '871', drg: '871',
+        department: 'ICU', los_days: 5, los: 5, risk_level: 'critical',
+        hospital_npi: '1881018208', hospital_name: 'Memorial General Hospital',
+        ai_tools: ['epic_sepsis_model', 'billing_coding_ai', 'chatgpt_clinical'],
+        governance_gaps: [
+          'ChatGPT used without a HIPAA Business Associate Agreement — potential breach',
+          'Sepsis model bias monitoring report not filed for current quarter',
+        ],
+      },
+    ],
+  },
+
+  // ── Sarah Brennan — Mayo Clinic ──────────────────────────────────────────
+  'MRN-MAYO1': {
+    name: 'Sarah Brennan', dob: '1978-09-15', gender: 'F', password: 'mayo1234',
+    encounters: [
+      {
+        id: 'ADM-MCR-041', adm_id: 'ADM-MCR-041',
+        date: '2025-12-01', admission_date: '2025-12-01', discharge_date: '2025-12-08',
+        reason: 'Cardiac catheterization — coronary artery disease',
+        icd10_desc: 'Coronary artery disease, native vessel', drg_code: '247', drg: '247',
+        department: 'Cardiovascular ICU', los_days: 7, los: 7, risk_level: 'high',
+        hospital_npi: '1376412986', hospital_name: 'Mayo Clinic',
+        ai_tools: ['viz_ai', 'billing_coding_ai', 'ehr_predictive_analytics', 'ambient_clinical_intelligence'],
+        governance_gaps: [
+          'Ambient clinical AI active — no documented patient consent form',
+          'No formal AI governance committee charter on file (4+ tools deployed)',
+          'EHR predictive analytics bias report not submitted for Q4',
+        ],
+      },
+      {
+        id: 'ADM-MCR-029', adm_id: 'ADM-MCR-029',
+        date: '2025-09-10', admission_date: '2025-09-10', discharge_date: '2025-09-11',
+        reason: 'Outpatient MRI — neurology follow-up',
+        icd10_desc: 'Migraine with aura, intractable', drg_code: '102', drg: '102',
+        department: 'Neurology', los_days: 1, los: 1, risk_level: 'medium',
+        hospital_npi: '1376412986', hospital_name: 'Mayo Clinic',
+        ai_tools: ['radiology_ai_cad', 'billing_coding_ai'],
+        governance_gaps: [
+          'No FDA 510(k) clearance number documented for AI-assisted CADe radiology tool',
+        ],
+      },
+    ],
   },
 }
 
+// Patient portal email login (alternative to MRN+DOB flow)
 const PATIENT_USERS = [
-  { email: 'patient@demo.com',   password: 'patient123', name: 'Alex Johnson',  dob: '1985-03-14', mrn: 'MRN-20847' },
+  { email: 'patient@demo.com',  password: 'patient123', name: 'Alex Johnson',  dob: '1985-03-14', mrn: 'MRN-20847' },
   { email: 'demo@clearpath.ai', password: 'demo1234',   name: 'Demo Patient',  dob: '1990-07-22', mrn: 'MRN-99001' },
+  { email: 'sarah@mayo.demo',   password: 'mayo1234',   name: 'Sarah Brennan', dob: '1978-09-15', mrn: 'MRN-MAYO1' },
 ]
 
 

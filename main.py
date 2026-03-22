@@ -47,8 +47,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://YOUR-FRONTEND.vercel.app",       # replace after Vercel deploy
-        "https://YOUR-BACKEND.up.railway.app",    # replace after Railway deploy
+        "http://localhost:3000",
+        os.environ.get("FRONTEND_URL", ""),       # set in Insforge env vars
     ],
     allow_credentials=True,
     allow_methods=["*"],

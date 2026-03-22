@@ -1,0 +1,356 @@
+{
+  "tools": {
+    "epic_sepsis_model": {
+      "display_name": "Epic Sepsis Prediction Model",
+      "vendor": "Epic Systems",
+      "category": "clinical_decision_support",
+      "subcategory": "predictive_analytics",
+      "risk_level": "high",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "ML model that predicts sepsis risk from EHR data and alerts clinical staff. Shown to produce high false-positive rates in some populations.",
+      "known_issues": [
+        "Published studies show higher false positive rates in Black patients",
+        "Retrospective validation may not reflect real-world performance",
+        "Alert fatigue documented at multiple health systems"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "CO_AI_ACT"],
+      "governance_requirements": [
+        "Pre-deployment validation on local population required",
+        "Human clinician must review all alerts",
+        "Bias monitoring required quarterly",
+        "Patient disclosure required in TX, CA, CO"
+      ],
+      "shadow_ai_risk": "low",
+      "commonly_undisclosed": true
+    },
+    "nuance_dax": {
+      "display_name": "Nuance DAX (Dragon Ambient eXperience)",
+      "vendor": "Nuance / Microsoft",
+      "category": "ambient_documentation",
+      "subcategory": "clinical_note_generation",
+      "risk_level": "medium",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": false,
+      "affects_billing": false,
+      "description": "Ambient AI that listens to patient-physician conversations and generates clinical notes automatically.",
+      "known_issues": [
+        "Audio recording of patient conversations raises consent questions",
+        "AI-generated notes can contain hallucinations if audio is unclear",
+        "Some patients unaware they are being recorded"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "SB_942", "AB_489"],
+      "governance_requirements": [
+        "Explicit patient consent for ambient recording required",
+        "Physician must review and attest all AI-generated notes",
+        "BAA with Microsoft/Nuance must be current",
+        "Audio data retention policy required"
+      ],
+      "shadow_ai_risk": "medium",
+      "commonly_undisclosed": true
+    },
+    "google_deepmind_streams": {
+      "display_name": "Google DeepMind Streams (AKI Detection)",
+      "vendor": "Google DeepMind / Google Cloud",
+      "category": "diagnostic",
+      "subcategory": "early_warning_system",
+      "risk_level": "high",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "AI system for detecting acute kidney injury from blood test results. Generates alerts for clinical teams.",
+      "known_issues": [
+        "DeepMind UK NHS data sharing raised major privacy concerns",
+        "Algorithm performance varies significantly by patient demographics",
+        "Google Cloud data processing agreements must be carefully reviewed"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "CO_AI_ACT", "CMS_AI_STRATEGY"],
+      "governance_requirements": [
+        "Google BAA and Cloud DPA must both be current",
+        "Clinical validation on local population required",
+        "Data minimization principles must be documented",
+        "Impact assessment required in CO"
+      ],
+      "shadow_ai_risk": "low",
+      "commonly_undisclosed": false
+    },
+    "optum_claims_ai": {
+      "display_name": "Optum Claims and Prior Authorization AI",
+      "vendor": "Optum (UnitedHealth Group)",
+      "category": "billing_and_authorization",
+      "subcategory": "prior_authorization",
+      "risk_level": "high",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": true,
+      "description": "AI system used in prior authorization and claims processing. Subject to Congressional and DOJ scrutiny for high denial rates.",
+      "known_issues": [
+        "Class action lawsuit filed 2024 alleging algorithm denies medically necessary care",
+        "High denial rates for elderly patients documented",
+        "DOJ antitrust investigation ongoing as of 2025",
+        "nH Predict algorithm specifically criticized for post-acute care denials"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "CMS_AI_STRATEGY", "TRAIGA", "CO_AI_ACT"],
+      "governance_requirements": [
+        "Explainability requirement for all denials",
+        "Human review required for all denied claims",
+        "CMS reporting required for Medicare/Medicaid denials",
+        "Patient appeal pathway must be clearly documented"
+      ],
+      "shadow_ai_risk": "medium",
+      "commonly_undisclosed": true
+    },
+    "viz_ai": {
+      "display_name": "Viz.ai (Stroke & Cardiovascular AI)",
+      "vendor": "Viz.ai",
+      "category": "diagnostic",
+      "subcategory": "medical_imaging_ai",
+      "risk_level": "high",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "FDA-cleared AI that analyzes CT scans to detect stroke and cardiovascular conditions, alerting specialists via mobile.",
+      "known_issues": [
+        "False negative rate in certain anatomical variants",
+        "Time-critical alerts can create clinical workflow pressure"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "HHS_AI_SAFETY", "CO_AI_ACT"],
+      "governance_requirements": [
+        "FDA 510(k) clearance documentation must be on file",
+        "Radiologist or neurologist must confirm all alerts",
+        "Local validation study recommended",
+        "Incident reporting to FDA and HHS required for adverse events"
+      ],
+      "shadow_ai_risk": "low",
+      "commonly_undisclosed": false
+    },
+    "chatgpt_clinical": {
+      "display_name": "ChatGPT / GPT-4 (Clinical Use – Unofficial)",
+      "vendor": "OpenAI",
+      "category": "general_purpose_llm",
+      "subcategory": "unsanctioned_shadow_ai",
+      "risk_level": "critical",
+      "requires_disclosure": true,
+      "requires_baa": false,
+      "phi_access": false,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "Consumer ChatGPT used informally by clinical staff for documentation, differential diagnosis, or patient communication. NOT covered by BAA. Major HIPAA risk if PHI entered.",
+      "known_issues": [
+        "No BAA available for consumer tier — entering PHI is a HIPAA violation",
+        "Hallucination rate in clinical contexts is undocumented",
+        "No audit trail for clinical decisions",
+        "No institutional governance",
+        "OpenAI may use inputs for training"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "TRAIGA", "AB_489", "CO_AI_ACT"],
+      "governance_requirements": [
+        "IMMEDIATE: Policy required prohibiting entry of PHI into consumer LLMs",
+        "Staff training required",
+        "If enterprise tier with BAA — additional governance still required",
+        "Audit of current usage recommended"
+      ],
+      "shadow_ai_risk": "critical",
+      "commonly_undisclosed": true,
+      "shadow_ai_indicator": true
+    },
+    "azure_openai_clinical": {
+      "display_name": "Azure OpenAI Service (Clinical)",
+      "vendor": "Microsoft Azure",
+      "category": "llm_clinical_integration",
+      "subcategory": "enterprise_ai",
+      "risk_level": "medium",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "Enterprise Azure OpenAI deployment for clinical applications. BAA-eligible. More governable than consumer ChatGPT.",
+      "known_issues": [
+        "Still requires custom governance layer",
+        "Model updates can change behavior unexpectedly",
+        "Prompt injection risks in clinical workflows"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "SB_942", "CO_AI_ACT"],
+      "governance_requirements": [
+        "Azure BAA must be current",
+        "Data residency must be configured to US regions",
+        "Prompt logging and audit trail required",
+        "Clinical validation required before deployment"
+      ],
+      "shadow_ai_risk": "low",
+      "commonly_undisclosed": false
+    },
+    "ambient_clinical_intelligence": {
+      "display_name": "Ambient Clinical Intelligence (ACI) – Generic",
+      "vendor": "Various (Suki, Abridge, DeepScribe, etc.)",
+      "category": "ambient_documentation",
+      "subcategory": "voice_to_note",
+      "risk_level": "medium",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": false,
+      "affects_billing": true,
+      "description": "Voice-based ambient AI tools for clinical note generation. Fast-growing category with variable governance maturity.",
+      "known_issues": [
+        "Patient consent for audio capture varies by vendor implementation",
+        "AI note accuracy varies significantly by clinical specialty",
+        "Billing code suggestions from AI notes raise compliance questions"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "AB_489", "SB_942"],
+      "governance_requirements": [
+        "Patient notice required before ambient recording",
+        "Physician attestation workflow required",
+        "BAA with specific vendor required",
+        "Note review policy required before billing submission"
+      ],
+      "shadow_ai_risk": "medium",
+      "commonly_undisclosed": true
+    },
+    "ehr_predictive_analytics": {
+      "display_name": "EHR Native Predictive Analytics (Epic, Cerner, etc.)",
+      "vendor": "Epic / Oracle Cerner / Others",
+      "category": "clinical_decision_support",
+      "subcategory": "embedded_ehr_ai",
+      "risk_level": "high",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "AI models embedded within EHR platforms (readmission risk, deterioration alerts, etc.). Often deployed without separate governance review.",
+      "known_issues": [
+        "Hospitals often activate without realizing AI-specific governance applies",
+        "Models trained on majority-population data may underperform for minorities",
+        "Alert fatigue from multiple simultaneous predictive models"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "TRAIGA", "CO_AI_ACT"],
+      "governance_requirements": [
+        "Inventory all activated AI features in EHR contracts",
+        "Ensure original EHR BAA covers AI feature data usage",
+        "Clinical validation recommended before activation",
+        "Bias monitoring program required in CO, recommended everywhere"
+      ],
+      "shadow_ai_risk": "high",
+      "commonly_undisclosed": true,
+      "shadow_ai_indicator": true
+    },
+    "radiology_ai_cad": {
+      "display_name": "Radiology AI / Computer-Aided Detection (CADe/CADx)",
+      "vendor": "Various (Aidoc, Rad AI, Annalise.ai, etc.)",
+      "category": "diagnostic",
+      "subcategory": "medical_imaging_ai",
+      "risk_level": "high",
+      "requires_disclosure": true,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": true,
+      "affects_billing": false,
+      "description": "AI systems that analyze radiological images to flag abnormalities. FDA-cleared tools are available but governance requirements remain.",
+      "known_issues": [
+        "FDA clearance does not eliminate need for local governance",
+        "Performance varies by imaging equipment and patient population",
+        "Radiologist over-reliance on AI flags documented"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "HHS_AI_SAFETY", "CO_AI_ACT", "CMS_AI_STRATEGY"],
+      "governance_requirements": [
+        "FDA clearance documentation required on file",
+        "Local clinical validation study recommended",
+        "Radiologist must maintain independent judgment",
+        "Adverse event reporting to FDA + HHS required"
+      ],
+      "shadow_ai_risk": "low",
+      "commonly_undisclosed": false
+    },
+    "billing_coding_ai": {
+      "display_name": "AI-Assisted Medical Coding and Billing",
+      "vendor": "Various (3M, Optum360, Nym Health, etc.)",
+      "category": "billing_and_authorization",
+      "subcategory": "revenue_cycle_ai",
+      "risk_level": "high",
+      "requires_disclosure": false,
+      "requires_baa": true,
+      "phi_access": true,
+      "patient_facing": false,
+      "affects_clinical_decisions": false,
+      "affects_billing": true,
+      "description": "AI tools that suggest or automate ICD/CPT billing codes from clinical documentation. High risk for fraudulent billing if not governed.",
+      "known_issues": [
+        "AI upcoding risk — model may suggest higher-severity codes",
+        "CMS actively auditing AI-assisted billing for Medicare fraud",
+        "HHS OIG has flagged AI billing tools in fraud risk bulletins"
+      ],
+      "applicable_regulations": ["HIPAA_AI", "CMS_AI_STRATEGY"],
+      "governance_requirements": [
+        "Human coder review required before claim submission",
+        "Audit trail of AI suggestions vs final codes required",
+        "Regular compliance review of AI code suggestion accuracy",
+        "OIG compliance program should specifically address AI billing tools"
+      ],
+      "shadow_ai_risk": "high",
+      "commonly_undisclosed": true,
+      "shadow_ai_indicator": true
+    }
+  },
+  "risk_level_definitions": {
+    "critical": {
+      "description": "Immediate patient safety or major legal risk. Requires immediate action.",
+      "response_time": "24-72 hours",
+      "escalation": "C-suite + Legal + Risk Management"
+    },
+    "high": {
+      "description": "Significant compliance gap with potential for penalties or patient harm.",
+      "response_time": "30 days",
+      "escalation": "Compliance Officer + Department Head"
+    },
+    "medium": {
+      "description": "Compliance gap that should be addressed. Limited immediate risk.",
+      "response_time": "90 days",
+      "escalation": "Compliance Officer"
+    },
+    "low": {
+      "description": "Best practice gap. No immediate legal or safety risk.",
+      "response_time": "180 days",
+      "escalation": "Department Manager"
+    }
+  },
+  "shadow_ai_patterns": {
+    "high_risk_indicators": [
+      "Staff reporting use of consumer AI chatbots for clinical tasks",
+      "Unvetted AI browser extensions on clinical workstations",
+      "Undeclared AI features in existing vendor contracts",
+      "Consumer-grade AI used for discharge summaries or care plans",
+      "Personal devices with AI apps accessing clinical systems"
+    ],
+    "common_shadow_ai_tools": [
+      "Consumer ChatGPT (no BAA)",
+      "Google Gemini (consumer tier)",
+      "Copilot (consumer tier)",
+      "AI browser extensions (Grammarly AI, etc.)",
+      "Consumer voice assistants in clinical areas",
+      "Undeclared EHR AI modules activated by vendor"
+    ]
+  }
+}

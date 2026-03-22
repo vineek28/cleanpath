@@ -1,0 +1,530 @@
+{
+  "metadata": {
+    "kb_version": "2.0.0",
+    "last_updated": "2026-03-21",
+    "total_states_covered": 15,
+    "total_federal_laws": 7,
+    "source": "Research-verified: Akerman LLP, Manatt Health, Bipartisan Policy Center, GenHealth.ai, PMHScribe, NCSL",
+    "note": "47 states introduced healthcare AI bills in 2025. 33 laws signed across 21 states. This KB covers enacted/active laws most relevant to hospital AI compliance."
+  },
+  "states": {
+    "texas": {
+      "display_name": "Texas",
+      "laws": [
+        {
+          "id": "TRAIGA",
+          "full_name": "Texas Responsible AI Governance Act (HB 2802)",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["healthcare_providers", "hospitals", "insurers", "clinical_decision_support"],
+          "requirements": [
+            {"id": "TX-R1","category": "disclosure","title": "Written Disclosure Before AI Interaction","description": "Healthcare practitioners must provide patients with conspicuous written disclosure of AI use in diagnosis or treatment before or at the time of interaction. In emergencies, disclosure must occur as soon as reasonably practicable.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true},
+            {"id": "TX-R2","category": "non_discrimination","title": "Prohibition on Intentionally Discriminatory AI","description": "AI systems must not have the specific intent to discriminate against individuals based on protected characteristics. Intentional discriminatory design is prohibited.","severity": "critical","applies_to_risk_levels": ["high", "medium", "low"],"documentation_required": true,"patient_facing": false},
+            {"id": "TX-R3","category": "human_oversight","title": "Clinician Must Review All AI Recommendations","description": "Practitioners must personally review all AI-generated content or recommendations before a clinical decision is made.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "TX-R4","category": "audit_trail","title": "5-Year AI Decision Audit Trail","description": "Hospitals must maintain logs of AI-assisted decisions for 5 years, accessible to regulators within 30 days of request.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "TX-R5","category": "vendor_accountability","title": "Vendor Contracts Must Include AI Governance Clauses","description": "All AI vendor contracts must include data usage restrictions, bias testing attestations, and incident notification clauses.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+          ],
+          "penalties": {"description": "Civil penalties enforced by Texas AG with civil investigative demand powers","max_per_violation": 10000,"enforcement_body": "Texas Attorney General"},
+          "source_url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/HB02802I.htm",
+          "notes": "Signed June 2025, effective January 1, 2026. Among the strictest US state AI governance laws."
+        },
+        {
+          "id": "TX_SB1188",
+          "full_name": "Texas SB 1188 — AI in Clinical Practice Act",
+          "effective_date": "2025-09-01",
+          "status": "active",
+          "applies_to": ["licensed_practitioners", "hospitals", "clinics"],
+          "requirements": [
+            {"id": "TX-SB1188-R1","category": "scope_of_practice","title": "AI Use Within Practitioner Scope of License Only","description": "Practitioners may use AI for diagnostic or treatment purposes only if acting within their scope of license and personally reviewing all AI-generated content before a clinical decision is made.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "TX-SB1188-R2","category": "disclosure","title": "Practitioner Must Disclose AI Use to Patients","description": "Licensed practitioners must disclose to patients when AI tools are used in their diagnosis or treatment.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Professional licensing board enforcement; potential license revocation","max_per_violation": null,"enforcement_body": "Texas Medical Board"},
+          "source_url": "https://capitol.texas.gov",
+          "notes": "Effective September 1, 2025 — already in force. Complements TRAIGA with practitioner-specific requirements."
+        }
+      ]
+    },
+    "california": {
+      "display_name": "California",
+      "laws": [
+        {
+          "id": "CA_AB3030",
+          "full_name": "California AB 3030 — AI in Health Care Communications",
+          "effective_date": "2025-01-01",
+          "status": "active",
+          "applies_to": ["healthcare_providers", "hospitals", "health_plans"],
+          "requirements": [
+            {"id": "CA-AB3030-R1","category": "disclosure","title": "AI Disclosure in Patient-Facing Communications","description": "Healthcare providers must disclose when AI is used to generate patient-facing communications, clinical summaries, or treatment information.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Enforced by DMHC and California AG; up to $10,000 per violation","max_per_violation": 10000,"enforcement_body": "California AG / DMHC"},
+          "source_url": "https://leginfo.legislature.ca.gov",
+          "notes": "Effective January 2025. Foundation for subsequent 2026 California AI laws."
+        },
+        {
+          "id": "CA_SB1120",
+          "full_name": "California SB 1120 — AI in Health Plan Coverage Decisions",
+          "effective_date": "2025-01-01",
+          "status": "active",
+          "applies_to": ["health_plans", "insurers", "managed_care_organizations"],
+          "requirements": [
+            {"id": "CA-SB1120-R1","category": "insurance_ai","title": "Human Review Required Before AI Coverage Denial","description": "Health plans may not use AI as the sole basis for denying coverage or prior authorization. A licensed clinician must review all AI-recommended denials.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true},
+            {"id": "CA-SB1120-R2","category": "appeal_rights","title": "Patient Right to Appeal AI Coverage Decisions","description": "Patients have the right to appeal any coverage decision made with AI assistance. Appeals must be reviewed by a human clinician.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Up to $25,000 per violation","max_per_violation": 25000,"enforcement_body": "California DMHC"},
+          "source_url": "https://leginfo.legislature.ca.gov",
+          "notes": "California first-in-nation law restricting AI insurance denials. Template for AZ, MD, NE, TX laws."
+        },
+        {
+          "id": "AB_489",
+          "full_name": "California AB 489 — Healthcare AI Disclosure Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["healthcare_providers", "hospitals", "telehealth"],
+          "requirements": [
+            {"id": "CA-AB489-R1","category": "provider_impersonation","title": "AI Cannot Impersonate Licensed Healthcare Providers","description": "AI systems must not use terms, letters, phrases, or design elements that indicate or imply the AI possesses a healthcare license or is a licensed professional.","severity": "critical","applies_to_risk_levels": ["high", "medium", "low"],"documentation_required": true,"patient_facing": true},
+            {"id": "CA-AB489-R2","category": "disclosure","title": "Pre-Interaction AI Disclosure to Patients","description": "Patients must be informed they are interacting with AI before the interaction begins.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true},
+            {"id": "CA-AB489-R3","category": "opt_out","title": "Patient Right to Opt Out of AI-Assisted Care","description": "Patients have the right to opt out of AI-assisted care and receive human-only pathways where clinically feasible.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Up to $10,000 per knowing violation; $25,000 for repeat violations","max_per_violation": 25000,"enforcement_body": "California AG / DMHC"},
+          "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB489",
+          "notes": "Effective January 1, 2026."
+        },
+        {
+          "id": "SB_942",
+          "full_name": "California AI Transparency Act (SB 942)",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["large_ai_providers", "hospitals"],
+          "requirements": [
+            {"id": "CA-SB942-R1","category": "ai_detection_tool","title": "Free AI Content Detection Tool Required","description": "Covered providers must provide a free AI content detection tool to users.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": false,"patient_facing": true},
+            {"id": "CA-SB942-R2","category": "disclosure_metadata","title": "AI-Generated Clinical Content Must Be Labeled","description": "AI-generated clinical notes, reports, or patient communications must include metadata identifying them as AI-generated.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+          ],
+          "penalties": {"description": "Up to $5,000 per violation","max_per_violation": 5000,"enforcement_body": "California AG"},
+          "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB942",
+          "notes": "Primarily affects large AI providers. Ambient documentation AI (Nuance DAX, etc.) must label AI-generated notes."
+        },
+        {
+          "id": "AB_2013",
+          "full_name": "California AB 2013 — AI Training Data Transparency",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["ai_developers", "healthcare_ai_vendors"],
+          "requirements": [
+            {"id": "CA-AB2013-R1","category": "training_data","title": "AI Vendors Must Disclose Training Data Sources","description": "AI developers must publish documentation about training data sources, datasets used, provenance, and known limitations.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+          ],
+          "penalties": {"description": "Up to $10,000 per violation","max_per_violation": 10000,"enforcement_body": "California AG"},
+          "source_url": "https://leginfo.legislature.ca.gov",
+          "notes": "Hospitals should require vendor training data disclosures in contracts."
+        }
+      ]
+    },
+    "colorado": {
+      "display_name": "Colorado",
+      "laws": [
+        {
+          "id": "CO_AI_ACT",
+          "full_name": "Colorado Artificial Intelligence Act (SB 24-205)",
+          "effective_date": "2026-06-30",
+          "status": "active",
+          "applies_to": ["high_risk_ai_deployers", "hospitals", "healthcare_providers", "insurers"],
+          "requirements": [
+            {"id": "CO-R1","category": "risk_assessment","title": "Annual Algorithmic Impact Assessment","description": "Deployers of high-risk AI must conduct and document annual algorithmic impact assessments covering bias, accuracy, and fairness metrics.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "CO-R2","category": "risk_management","title": "NIST AI RMF-Aligned Risk Management Program","description": "Organizations must implement a documented AI risk management program aligned with NIST AI RMF or equivalent framework.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "CO-R3","category": "opt_out","title": "Right to Opt Out and Appeal AI Decisions","description": "Individuals must have the right to opt out of high-risk AI decisions and appeal adverse decisions made with AI assistance.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true},
+            {"id": "CO-R4","category": "disclosure","title": "Notify Developers of Algorithmic Discrimination","description": "Deployers must notify AI developers of known or suspected algorithmic discrimination within 90 days of discovery.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "CO-R5","category": "inventory","title": "Annual AI System Inventory Required","description": "Organizations must maintain a current inventory of all high-risk AI systems in use, updated at minimum annually.","severity": "medium","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false}
+          ],
+          "penalties": {"description": "Civil penalties by Colorado AG; varies by violation type","max_per_violation": null,"enforcement_body": "Colorado Attorney General"},
+          "source_url": "https://leg.colorado.gov/bills/sb24-205",
+          "notes": "Effective date pushed to June 30, 2026. Most comprehensive US state AI law. Healthcare is explicitly high-risk."
+        }
+      ]
+    },
+    "illinois": {
+      "display_name": "Illinois",
+      "laws": [
+        {
+          "id": "IL_AIAA",
+          "full_name": "Illinois Artificial Intelligence Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["employers", "healthcare_providers"],
+          "requirements": [
+            {"id": "IL-R1","category": "bias_audit","title": "Annual Independent Third-Party AI Bias Audit","description": "Employers using AI in employment decisions must conduct annual bias audits by independent third parties and publish results.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "IL-R2","category": "disclosure","title": "Notification Required When AI Used in Decisions","description": "Organizations must notify individuals when AI is used in decisions that significantly affect them.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Up to $500 per violation per day","max_per_violation": 500,"enforcement_body": "Illinois Department of Labor"},
+          "source_url": "https://www.ilga.gov",
+          "notes": "Focuses on employment AI but extends to healthcare HR and clinical staffing systems."
+        },
+        {
+          "id": "IL_HB1806",
+          "full_name": "Illinois HB 1806 — AI in Behavioral Health Act",
+          "effective_date": "2025-08-01",
+          "status": "active",
+          "applies_to": ["behavioral_health_providers", "hospitals_with_mental_health", "telehealth_mental_health"],
+          "requirements": [
+            {"id": "IL-HB1806-R1","category": "human_oversight","title": "AI Cannot Make Independent Therapeutic Decisions","description": "AI systems are prohibited from making independent therapeutic decisions, directly interacting with clients in therapeutic communication, or generating treatment plans without licensed professional review and approval.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "IL-HB1806-R2","category": "disclosure","title": "Disclose AI Use in Behavioral Health Services","description": "Patients must be informed when AI tools assist in their behavioral health or mental health care.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Professional licensing enforcement; potential license revocation","max_per_violation": null,"enforcement_body": "Illinois Department of Professional Regulation"},
+          "source_url": "https://www.ilga.gov",
+          "notes": "Signed August 2025, effective immediately. Far-reaching law targeting AI in therapy and psychotherapy."
+        }
+      ]
+    },
+    "utah": {
+      "display_name": "Utah",
+      "laws": [
+        {
+          "id": "UT_AI_POLICY_ACT",
+          "full_name": "Utah Artificial Intelligence Policy Act (SB 149)",
+          "effective_date": "2024-05-01",
+          "status": "active",
+          "applies_to": ["all_businesses_using_ai", "healthcare_providers"],
+          "requirements": [
+            {"id": "UT-R1","category": "disclosure","title": "Disclose AI Interaction When Consumer Asks","description": "Businesses must disclose to consumers when they are interacting with AI rather than a human, upon request.","severity": "high","applies_to_risk_levels": ["high", "medium", "low"],"documentation_required": false,"patient_facing": true},
+            {"id": "UT-R2","category": "regulatory_sandbox","title": "AI Regulatory Learning Laboratory Available","description": "Utah's Office of AI Policy operates a regulatory learning lab that allows healthcare organizations to test AI tools under temporary regulatory waivers.","severity": "info","applies_to_risk_levels": ["high", "medium", "low"],"documentation_required": false,"patient_facing": false}
+          ],
+          "penalties": {"description": "Up to $2,500 per violation","max_per_violation": 2500,"enforcement_body": "Utah Division of Consumer Protection"},
+          "source_url": "https://le.utah.gov/~2024/bills/static/SB0149.html",
+          "notes": "First state to create a formal AI regulatory learning laboratory. Sandbox approach is a model for other states."
+        },
+        {
+          "id": "UT_H452",
+          "full_name": "Utah H 452 — Mental Health AI Chatbot Protection Act",
+          "effective_date": "2025-03-01",
+          "status": "active",
+          "applies_to": ["mental_health_chatbot_operators", "behavioral_health_providers", "hospitals"],
+          "requirements": [
+            {"id": "UT-H452-R1","category": "mental_health_safety","title": "Crisis Protocol Required for Mental Health AI","description": "AI mental health chatbots must have documented protocols preventing responses encouraging self-harm or suicidal ideation, and must refer users to crisis services when detected.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true},
+            {"id": "UT-H452-R2","category": "data_protection","title": "Mental Health AI Data Misuse Prohibited","description": "Operators of mental health AI chatbots are prohibited from misusing sensitive mental health data collected during AI interactions.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "UT-H452-R3","category": "transparency","title": "Mental Health AI Must Clearly Disclose It Is AI","description": "Mental health AI tools must clearly disclose they are AI-powered and not human therapists.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Civil penalties enforced by Utah AG","max_per_violation": 5000,"enforcement_body": "Utah Attorney General"},
+          "source_url": "https://le.utah.gov",
+          "notes": "Nation's first law specifically regulating AI-enabled mental health tools. Enacted March 2025."
+        }
+      ]
+    },
+    "maryland": {
+      "display_name": "Maryland",
+      "laws": [
+        {
+          "id": "MD_H820",
+          "full_name": "Maryland HB 820 — Health Insurance AI Utilization Review Act",
+          "effective_date": "2025-10-01",
+          "status": "active",
+          "applies_to": ["health_insurers", "managed_care", "hospitals_submitting_claims"],
+          "requirements": [
+            {"id": "MD-R1","category": "insurance_ai","title": "Fair AI Practices in Utilization Reviews","description": "Insurers must ensure AI-assisted utilization review does not result in discrimination. AI cannot be sole basis for coverage denials.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "MD-R2","category": "non_discrimination","title": "AI Insurance Decisions Must Not Discriminate","description": "Maryland explicitly prohibits AI-driven coverage decisions that result in discrimination across demographic groups.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "MD-R3","category": "patient_rights","title": "Patient Right to Human Review of AI Denial","description": "Patients have the right to request human review of any coverage decision involving AI.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Civil penalties by Maryland Insurance Commissioner","max_per_violation": null,"enforcement_body": "Maryland Insurance Administration"},
+          "source_url": "https://mgaleg.maryland.gov",
+          "notes": "Part of 5-state wave (AZ, CA, MD, NE, TX) restricting AI insurance denials. Effective October 2025."
+        }
+      ]
+    },
+    "arizona": {
+      "display_name": "Arizona",
+      "laws": [
+        {
+          "id": "AZ_HB2175",
+          "full_name": "Arizona HB 2175 — AI in Insurance Decisions Act",
+          "effective_date": "2025-09-01",
+          "status": "active",
+          "applies_to": ["health_insurers", "managed_care_organizations", "hospitals_submitting_claims"],
+          "requirements": [
+            {"id": "AZ-R1","category": "human_review","title": "Licensed Clinician Must Review AI Insurance Denial","description": "Arizona insurers must have a licensed clinician conduct human review before any AI-recommended insurance denial is issued to a patient.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+            {"id": "AZ-R2","category": "patient_rights","title": "Patients Must Be Notified of AI in Coverage Decisions","description": "Patients must be notified when AI was used in any coverage or prior authorization decision that affects them.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Arizona Department of Insurance enforcement; license actions possible","max_per_violation": null,"enforcement_body": "Arizona Department of Insurance"},
+          "source_url": "https://www.azleg.gov",
+          "notes": "Part of multi-state movement restricting AI in insurance denials. Effective September 2025."
+        }
+      ]
+    },
+    "nebraska": {
+      "display_name": "Nebraska",
+      "laws": [
+        {
+          "id": "NE_L77",
+          "full_name": "Nebraska LB 77 — Ensuring Transparency in Prior Authorization Act",
+          "effective_date": "2025-07-01",
+          "status": "active",
+          "applies_to": ["health_insurers", "managed_care", "prior_authorization_systems"],
+          "requirements": [
+            {"id": "NE-R1","category": "transparency","title": "Prior Authorization AI Must Be Disclosed","description": "Insurers using AI in prior authorization must disclose this to patients and providers. AI denial decisions must include the specific clinical criteria applied.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true},
+            {"id": "NE-R2","category": "human_oversight","title": "Named Clinician Accountable for AI Prior Auth Denial","description": "A licensed clinician must be accountable for any AI-assisted prior authorization denial. The clinician's name must be available to patients upon request.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Nebraska Insurance Department enforcement","max_per_violation": null,"enforcement_body": "Nebraska Insurance Department"},
+          "source_url": "https://nebraskalegislature.gov",
+          "notes": "Focused specifically on AI transparency in prior authorization — highest-friction AI use case in healthcare."
+        }
+      ]
+    },
+    "new_york": {
+      "display_name": "New York",
+      "laws": [
+        {
+          "id": "NY_LOCAL_LAW_144",
+          "full_name": "New York City Local Law 144 — AI Hiring Bias Audit",
+          "effective_date": "2023-07-05",
+          "status": "active",
+          "applies_to": ["nyc_employers", "healthcare_entities_in_nyc"],
+          "requirements": [
+            {"id": "NY-R1","category": "bias_audit","title": "Annual Independent Bias Audit for Employment AI","description": "NYC employers using automated employment decision tools must publish annual independent bias audit results.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "NY-R2","category": "disclosure","title": "Notify Individuals When Employment AI Is Used","description": "NYC employers must notify candidates when an automated decision tool is used in employment decisions affecting them.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "$500 to $1,500 per violation","max_per_violation": 1500,"enforcement_body": "NYC Department of Consumer and Worker Protection"},
+          "source_url": "https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page",
+          "notes": "First-in-nation bias audit requirement for employment AI."
+        },
+        {
+          "id": "NY_MENTAL_HEALTH_CHATBOT",
+          "full_name": "New York State Budget — Mental Health AI Chatbot Provisions",
+          "effective_date": "2025-04-01",
+          "status": "active",
+          "applies_to": ["mental_health_chatbot_operators", "behavioral_health_providers"],
+          "requirements": [
+            {"id": "NY-MH-R1","category": "mental_health_safety","title": "Mental Health AI Chatbot Safety and Disclosure","description": "AI chatbots used in mental health contexts must implement safety protocols and clearly disclose they are AI, not human therapists.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Varies by enforcement action","max_per_violation": null,"enforcement_body": "New York State Office of Mental Health"},
+          "source_url": "https://www.nysenate.gov",
+          "notes": "Included in 2025 NY State Budget. Part of national mental health chatbot regulation wave."
+        }
+      ]
+    },
+    "florida": {
+      "display_name": "Florida",
+      "laws": [
+        {
+          "id": "FL_HB1459",
+          "full_name": "Florida HB 1459 — Government AI Transparency Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["state_agencies", "state_funded_healthcare"],
+          "requirements": [
+            {"id": "FL-R1","category": "transparency","title": "State Agencies Must Publicly Disclose AI Use","description": "State agencies must publicly disclose all AI systems in use, their purpose, and accuracy metrics.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "FL-R2","category": "disclosure","title": "Patient Notification of AI in State-Funded Care","description": "State-funded healthcare facilities must notify patients when AI systems are used in their care decisions.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Agency enforcement; varies","max_per_violation": null,"enforcement_body": "Florida AG"},
+          "source_url": "https://www.flsenate.gov",
+          "notes": "Primarily affects state-funded healthcare. Florida held October 2025 hearings on AI in insurance."
+        }
+      ]
+    },
+    "minnesota": {
+      "display_name": "Minnesota",
+      "laws": [
+        {
+          "id": "MN_CONSUMER_DATA_PRIVACY",
+          "full_name": "Minnesota Consumer Data Privacy Act",
+          "effective_date": "2025-07-31",
+          "status": "active",
+          "applies_to": ["businesses_processing_consumer_data", "non_hipaa_health_entities"],
+          "requirements": [
+            {"id": "MN-R1","category": "data_rights","title": "Right to Opt Out of AI Profiling","description": "Consumers have the right to opt out of AI profiling that produces legal or similarly significant effects, including healthcare-related profiling.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true},
+            {"id": "MN-R2","category": "impact_assessment","title": "Data Protection Impact Assessment for AI Profiling","description": "Organizations conducting AI profiling must conduct data protection impact assessments for high-risk processing activities.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false}
+          ],
+          "penalties": {"description": "Up to $7,500 per violation","max_per_violation": 7500,"enforcement_body": "Minnesota Attorney General"},
+          "source_url": "https://www.revisor.mn.gov",
+          "notes": "VCDPA-model law. HIPAA-regulated entities have carve-outs but non-HIPAA health data is covered."
+        }
+      ]
+    },
+    "indiana": {
+      "display_name": "Indiana",
+      "laws": [
+        {
+          "id": "IN_CDPA",
+          "full_name": "Indiana Consumer Data Protection Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["businesses_processing_consumer_data"],
+          "requirements": [
+            {"id": "IN-R1","category": "data_rights","title": "Opt-Out Rights for AI Profiling Decisions","description": "Consumers may opt out of AI profiling that produces legal or similarly significant effects. Health AI tools outside HIPAA coverage must comply.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Up to $7,500 per violation","max_per_violation": 7500,"enforcement_body": "Indiana Attorney General"},
+          "source_url": "https://iga.in.gov",
+          "notes": "VCDPA-model law effective January 1, 2026. PHI and HIPAA-covered entities are exempt."
+        }
+      ]
+    },
+    "rhode_island": {
+      "display_name": "Rhode Island",
+      "laws": [
+        {
+          "id": "RI_DPDPA",
+          "full_name": "Rhode Island Data Privacy and Protection Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["businesses_processing_consumer_data"],
+          "requirements": [
+            {"id": "RI-R1","category": "data_rights","title": "Consumer Opt-Out of AI Profiling and Impact Assessments","description": "Consumers may opt out of AI profiling with significant effects. Data protection impact assessments required for high-risk AI processing.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Up to $10,000 per violation","max_per_violation": 10000,"enforcement_body": "Rhode Island AG"},
+          "source_url": "https://webserver.rilin.state.ri.us",
+          "notes": "VCDPA-model law effective January 1, 2026. HIPAA carve-out applies."
+        }
+      ]
+    },
+    "kentucky": {
+      "display_name": "Kentucky",
+      "laws": [
+        {
+          "id": "KY_CDPA",
+          "full_name": "Kentucky Consumer Data Protection Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["businesses_processing_consumer_data"],
+          "requirements": [
+            {"id": "KY-R1","category": "data_rights","title": "Opt-Out Rights for AI Profiling","description": "Consumers have the right to opt out of AI-based profiling producing significant effects. Healthcare AI tools outside HIPAA coverage must comply.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Up to $7,500 per violation","max_per_violation": 7500,"enforcement_body": "Kentucky AG"},
+          "source_url": "https://apps.legislature.ky.gov",
+          "notes": "VCDPA-model law effective January 1, 2026. HIPAA-regulated PHI is exempt."
+        }
+      ]
+    },
+    "new_mexico": {
+      "display_name": "New Mexico",
+      "laws": [
+        {
+          "id": "NM_MENTAL_HEALTH_AI",
+          "full_name": "New Mexico Rule 16.27.18.24 — Ethical AI Use by Mental Health Providers",
+          "effective_date": "2025-11-18",
+          "status": "active",
+          "applies_to": ["mental_health_counselors", "therapists", "behavioral_health_providers"],
+          "requirements": [
+            {"id": "NM-R1","category": "ethical_ai_use","title": "AI in Mental Health Must Meet Ethical Standards","description": "AI tools used by licensed counselors and therapists must be used ethically and within professional scope. Human clinical judgment must not be replaced by AI.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+            {"id": "NM-R2","category": "disclosure","title": "Mental Health Providers Must Disclose AI Use to Clients","description": "Mental health providers must disclose to clients when AI tools are used in the provision of services.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": true}
+          ],
+          "penalties": {"description": "Professional licensing board enforcement","max_per_violation": null,"enforcement_body": "New Mexico Counseling and Therapy Practice Board"},
+          "source_url": "https://www.nmlegis.gov",
+          "notes": "Effective November 18, 2025. First state to specifically regulate AI ethics for mental health counselors via professional standards."
+        }
+      ]
+    }
+  },
+  "federal": {
+    "laws": [
+      {
+        "id": "HIPAA_AI",
+        "full_name": "HIPAA with AI Addendum — HHS Guidance on AI and PHI",
+        "effective_date": "2024-06-01",
+        "status": "active",
+        "applies_to": ["all_covered_entities", "business_associates_with_ai"],
+        "requirements": [
+          {"id": "FED-HIPAA-R1","category": "phi_protection","title": "PHI Cannot Train AI Without Explicit Patient Authorization","description": "Protected Health Information may not be used to train AI models without explicit patient authorization. De-identification must meet Safe Harbor or Expert Determination standards.","severity": "critical","applies_to_risk_levels": ["high", "medium", "low"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-HIPAA-R2","category": "baa_requirement","title": "BAA Required for All AI Vendors Accessing PHI","description": "All AI vendors with access to PHI must have a signed and current Business Associate Agreement in place before deployment.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-HIPAA-R3","category": "minimum_necessary","title": "AI Systems Must Access Minimum Necessary PHI","description": "AI systems must access only the minimum necessary PHI to perform their function. Bulk data access for AI training requires documented justification.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/artificial-intelligence/index.html",
+        "notes": "HHS formal guidance 2024. Applies to every US hospital accepting Medicare/Medicaid."
+      },
+      {
+        "id": "ACA_SECTION_1557",
+        "full_name": "ACA Section 1557 Final Rule — AI Non-Discrimination in Federally Funded Healthcare",
+        "effective_date": "2024-07-05",
+        "status": "active",
+        "applies_to": ["all_federally_funded_healthcare", "medicaid_providers", "medicare_providers", "aca_marketplace_plans"],
+        "requirements": [
+          {"id": "FED-1557-R1","category": "non_discrimination","title": "AI Patient Care Decision Tools Must Not Discriminate","description": "Any entity receiving federal healthcare funds must ensure AI patient care decision support tools do not discriminate based on race, color, national origin, sex, age, or disability. Regular testing and validation required.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-1557-R2","category": "bias_testing","title": "Ongoing Bias Testing of Clinical AI Required","description": "Covered entities must establish internal standards for ongoing evaluation of AI tools for discrimination. Must verify whether tools use race, sex, age, or disability as input variables.","severity": "critical","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-1557-R3","category": "risk_mitigation","title": "Mitigate Discriminatory AI Algorithms","description": "If a covered entity identifies a biased AI tool, it must take reasonable mitigation steps including discontinuing race-adjusted algorithms without clinical justification.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.hhs.gov/civil-rights/for-individuals/section-1557/index.html",
+        "notes": "Effective July 5, 2024. Applies to virtually all US hospitals. Explicitly covers Epic sepsis models, prior auth AI, and clinical decision support tools."
+      },
+      {
+        "id": "CMS_AI_STRATEGY",
+        "full_name": "CMS AI Strategy — Medicare/Medicaid AI Requirements",
+        "effective_date": "2025-01-01",
+        "status": "active",
+        "applies_to": ["medicare_providers", "medicaid_providers", "cms_funded_hospitals"],
+        "requirements": [
+          {"id": "FED-CMS-R1","category": "clinical_decision_support","title": "CDS AI Must Meet CMS Evidence Standards","description": "Clinical Decision Support AI tools used in Medicare/Medicaid settings must meet CMS evidence-based standards.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-CMS-R2","category": "algorithm_transparency","title": "Billing and Prior Auth AI Must Be Explainable to CMS","description": "AI used in billing or prior authorization decisions for Medicare/Medicaid must provide explainable decision outputs auditable by CMS.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-CMS-R3","category": "bias_monitoring","title": "Report Health Equity Disparities in AI to CMS","description": "Providers must monitor and report to CMS any evidence of health equity disparities in AI-assisted care delivery.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.cms.gov/priorities/innovation/key-concepts/artificial-intelligence",
+        "notes": "Applies to virtually all US hospitals via Medicare/Medicaid participation."
+      },
+      {
+        "id": "HHS_AI_SAFETY",
+        "full_name": "HHS AI Safety Program — National Patient Safety Standards",
+        "effective_date": "2025-06-01",
+        "status": "active",
+        "applies_to": ["all_hospitals", "health_systems", "clinical_ai_deployers"],
+        "requirements": [
+          {"id": "FED-HHS-R1","category": "safety_testing","title": "Pre-Deployment Safety Testing for High-Risk AI","description": "High-risk AI systems must undergo documented pre-deployment safety testing in clinical environments before production use.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-HHS-R2","category": "incident_reporting","title": "Report AI Adverse Events to HHS Within 30 Days","description": "Hospitals must report AI-related adverse events to HHS within 30 days of discovery.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-HHS-R3","category": "governance","title": "AI Governance Committee Required for 100+ Bed Hospitals","description": "Health systems with more than 100 beds must have a designated AI governance committee or officer responsible for oversight.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.hhs.gov/about/news/2024/12/17/hhs-launches-artificial-intelligence-safety-program.html",
+        "notes": "New HHS program. Voluntary initially but expected to become mandatory for accreditation."
+      },
+      {
+        "id": "FDA_AI_MEDICAL_DEVICES",
+        "full_name": "FDA AI-Enabled Medical Device Guidance (PCCP) — December 2024",
+        "effective_date": "2024-12-01",
+        "status": "active",
+        "applies_to": ["hospitals_using_fda_cleared_ai", "radiology_ai_users", "diagnostic_ai_users"],
+        "requirements": [
+          {"id": "FED-FDA-R1","category": "device_clearance","title": "Maintain FDA Clearance Documentation for AI Devices","description": "Hospitals using FDA-cleared AI-enabled medical devices must maintain documentation of device clearance (510(k), De Novo, or PMA) on file and accessible to regulators.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-FDA-R2","category": "labeling","title": "AI Device Must Clearly Label AI Use in Plain Language","description": "Per FDA 2025 guidance, AI-enabled medical device labeling must clearly state the device uses AI with a plain-language description of how it supports clinical use.","severity": "high","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-FDA-R3","category": "adverse_event_reporting","title": "Report AI Device Adverse Events via MedWatch","description": "AI-related adverse events involving FDA-cleared devices must be reported via MedWatch to FDA, in addition to HHS AI Safety Program reporting.","severity": "critical","applies_to_risk_levels": ["high"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-and-machine-learning-aiml-enabled-medical-devices",
+        "notes": "1,250+ FDA-cleared AI medical devices as of July 2025. Radiology AI, diagnostic AI, CDS most affected."
+      },
+      {
+        "id": "ONC_HTI1",
+        "full_name": "ONC HTI-1 Rule — Algorithm Transparency and Health IT Certification",
+        "effective_date": "2024-06-01",
+        "status": "active",
+        "applies_to": ["health_it_developers", "hospitals_with_certified_ehr", "clinical_decision_support_vendors"],
+        "requirements": [
+          {"id": "FED-ONC-R1","category": "algorithm_transparency","title": "EHR Vendors Must Disclose AI Algorithm Data Sources","description": "Health IT developers must disclose relevant data sources concerning health equity for AI and decision support tools in certified health IT modules. Hospitals should require this from EHR vendors.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false},
+          {"id": "FED-ONC-R2","category": "interoperability","title": "AI Tool Data Must Meet Interoperability Standards","description": "AI tools embedded in certified health IT must support interoperability standards ensuring clinical data used in AI is accurately exchanged and attributed.","severity": "medium","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.healthit.gov/topic/laws-regulation-and-policy/health-it-and-health-information-exchange-basics/hti-1",
+        "notes": "ONC HTI-1 creates algorithm transparency requirements for certified health IT. Works in tandem with ACA Section 1557 anti-discrimination rules."
+      },
+      {
+        "id": "FTC_AI_HEALTH",
+        "full_name": "FTC Section 5 — Unfair and Deceptive Practices in Healthcare AI",
+        "effective_date": "2023-01-01",
+        "status": "active",
+        "applies_to": ["health_apps", "telehealth_platforms", "non_hipaa_health_entities", "direct_to_consumer_health_ai"],
+        "requirements": [
+          {"id": "FED-FTC-R1","category": "deceptive_practices","title": "No Deceptive Claims About AI Healthcare Capabilities","description": "Healthcare AI products may not make false or misleading claims about accuracy, safety, or clinical capabilities. FTC Section 5 applies to health AI marketing and patient-facing communications.","severity": "high","applies_to_risk_levels": ["high", "medium", "low"],"documentation_required": false,"patient_facing": true},
+          {"id": "FED-FTC-R2","category": "data_security","title": "Health Data Security for Non-HIPAA Health AI","description": "Health apps and AI tools collecting health data outside HIPAA coverage must comply with FTC Health Breach Notification Rule and maintain reasonable data security.","severity": "high","applies_to_risk_levels": ["high", "medium"],"documentation_required": true,"patient_facing": false}
+        ],
+        "source_url": "https://www.ftc.gov/business-guidance/resources/ftc-act-section-5-unfair-or-deceptive-acts",
+        "notes": "FTC increasingly active in health AI oversight. Applies to consumer-facing health AI outside HIPAA."
+      }
+    ]
+  },
+  "law_applicability_matrix": {
+    "texas": {"state_laws": ["TRAIGA", "TX_SB1188"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "california": {"state_laws": ["CA_AB3030", "CA_SB1120", "AB_489", "SB_942", "AB_2013"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "colorado": {"state_laws": ["CO_AI_ACT"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "illinois": {"state_laws": ["IL_AIAA", "IL_HB1806"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "utah": {"state_laws": ["UT_AI_POLICY_ACT", "UT_H452"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "maryland": {"state_laws": ["MD_H820"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "arizona": {"state_laws": ["AZ_HB2175"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "nebraska": {"state_laws": ["NE_L77"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "new_york": {"state_laws": ["NY_LOCAL_LAW_144", "NY_MENTAL_HEALTH_CHATBOT"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "florida": {"state_laws": ["FL_HB1459"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "minnesota": {"state_laws": ["MN_CONSUMER_DATA_PRIVACY"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "indiana": {"state_laws": ["IN_CDPA"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "rhode_island": {"state_laws": ["RI_DPDPA"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "kentucky": {"state_laws": ["KY_CDPA"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"]},
+    "new_mexico": {"state_laws": ["NM_MENTAL_HEALTH_AI"],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]},
+    "default": {"state_laws": [],"federal_laws": ["HIPAA_AI", "ACA_SECTION_1557", "CMS_AI_STRATEGY", "HHS_AI_SAFETY", "FDA_AI_MEDICAL_DEVICES", "ONC_HTI1"],"note": "All 6 federal laws apply to every US hospital. 47 states introduced healthcare AI bills in 2025 — check specific state entries above for enacted laws."}
+  }
+}

@@ -1,0 +1,46 @@
+# Secrets — never commit
+.env
+.env.*
+*.env
+
+# Database — contains patient data
+*.db
+*.sqlite
+*.sqlite3
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+*.egg
+
+# Node / Frontend
+clearpath-ui/node_modules/
+clearpath-ui/dist/
+clearpath-ui/.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Test artifacts
+test_*.pdf

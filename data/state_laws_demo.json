@@ -1,0 +1,540 @@
+{
+  "states": {
+    "texas": {
+      "display_name": "Texas",
+      "laws": [
+        {
+          "id": "TRAIGA",
+          "full_name": "Texas Responsible AI Governance Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["healthcare_providers", "hospitals", "insurers", "clinical_decision_support"],
+          "requirements": [
+            {
+              "id": "TX-R1",
+              "category": "disclosure",
+              "title": "Written Disclosure Before AI Interaction",
+              "description": "Healthcare entities must provide written disclosure to patients before any AI system interacts with or makes decisions about their care.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": true
+            },
+            {
+              "id": "TX-R2",
+              "category": "non_discrimination",
+              "title": "No Discriminatory AI Systems",
+              "description": "AI systems must not discriminate based on race, color, religion, sex, national origin, disability, or age in clinical decisions.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high", "medium", "low"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "TX-R3",
+              "category": "human_oversight",
+              "title": "Human Override Mechanism",
+              "description": "All high-risk AI decisions must have a documented human review pathway. Clinicians must be able to override AI recommendations.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "TX-R4",
+              "category": "audit_trail",
+              "title": "AI Decision Audit Trail",
+              "description": "Hospitals must maintain logs of AI-assisted decisions for a minimum of 5 years, accessible to regulators within 30 days of request.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "TX-R5",
+              "category": "vendor_accountability",
+              "title": "Vendor Contract Requirements",
+              "description": "All AI vendor contracts must include data usage restrictions, bias testing attestations, and incident notification clauses.",
+              "severity": "medium",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            }
+          ],
+          "penalties": {
+            "description": "Civil penalties up to $10,000 per violation per day",
+            "max_per_violation": 10000,
+            "enforcement_body": "Texas Attorney General"
+          },
+          "source_url": "https://capitol.texas.gov/tlodocs/89R/billtext/html/HB02802I.htm",
+          "notes": "Signed into law 2025. Among the strictest state-level AI governance laws in the US."
+        }
+      ]
+    },
+    "california": {
+      "display_name": "California",
+      "laws": [
+        {
+          "id": "AB_489",
+          "full_name": "California AB 489 – Healthcare AI Disclosure Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["healthcare_providers", "hospitals", "telehealth"],
+          "requirements": [
+            {
+              "id": "CA-AB489-R1",
+              "category": "provider_impersonation",
+              "title": "Prohibition on AI Impersonating Licensed Providers",
+              "description": "AI systems must not represent themselves as licensed physicians, nurses, or other healthcare providers. Clear labeling required at all times.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high", "medium", "low"],
+              "documentation_required": true,
+              "patient_facing": true
+            },
+            {
+              "id": "CA-AB489-R2",
+              "category": "disclosure",
+              "title": "Pre-Interaction AI Disclosure",
+              "description": "Patients must be informed they are interacting with AI before interaction begins, including a plain-language description of what the AI does.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": true
+            },
+            {
+              "id": "CA-AB489-R3",
+              "category": "opt_out",
+              "title": "Patient Right to Opt Out",
+              "description": "Patients have the right to opt out of AI-assisted care and receive human-only care pathways where clinically feasible.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": true
+            }
+          ],
+          "penalties": {
+            "description": "Up to $10,000 per knowing violation; up to $25,000 for repeat violations",
+            "max_per_violation": 25000,
+            "enforcement_body": "California Attorney General / DMHC"
+          },
+          "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB489",
+          "notes": "Specifically targets patient-facing AI in clinical settings."
+        },
+        {
+          "id": "SB_942",
+          "full_name": "California AI Transparency Act (SB 942)",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["all_ai_providers", "hospitals", "healthcare_entities"],
+          "requirements": [
+            {
+              "id": "CA-SB942-R1",
+              "category": "ai_detection_tool",
+              "title": "AI Content Detection Tool Requirement",
+              "description": "Any entity deploying generative AI in content-generating applications must provide a free AI detection tool to users.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": false,
+              "patient_facing": true
+            },
+            {
+              "id": "CA-SB942-R2",
+              "category": "disclosure_metadata",
+              "title": "AI-Generated Content Metadata",
+              "description": "AI-generated clinical notes, reports, or patient communications must include metadata identifying them as AI-generated.",
+              "severity": "medium",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            }
+          ],
+          "penalties": {
+            "description": "Up to $5,000 per violation",
+            "max_per_violation": 5000,
+            "enforcement_body": "California AG"
+          },
+          "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB942",
+          "notes": "Applies broadly to any AI generating content, including clinical documentation AI."
+        },
+        {
+          "id": "AB_2013",
+          "full_name": "California AB 2013 – AI Training Data Transparency Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["ai_developers", "healthcare_ai_vendors"],
+          "requirements": [
+            {
+              "id": "CA-AB2013-R1",
+              "category": "training_data",
+              "title": "Training Data Disclosure",
+              "description": "AI developers must publish documentation about training data sources, including datasets used, data provenance, and known limitations.",
+              "severity": "medium",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            }
+          ],
+          "penalties": {
+            "description": "Up to $10,000 per violation",
+            "max_per_violation": 10000,
+            "enforcement_body": "California AG"
+          },
+          "source_url": "https://leginfo.legislature.ca.gov",
+          "notes": "Primarily affects AI vendors/developers. Hospitals should ensure their vendors comply."
+        }
+      ]
+    },
+    "colorado": {
+      "display_name": "Colorado",
+      "laws": [
+        {
+          "id": "CO_AI_ACT",
+          "full_name": "Colorado Artificial Intelligence Act (SB 24-205)",
+          "effective_date": "2026-02-01",
+          "status": "active",
+          "applies_to": ["high_risk_ai_deployers", "hospitals", "healthcare_providers", "insurers"],
+          "requirements": [
+            {
+              "id": "CO-R1",
+              "category": "risk_assessment",
+              "title": "Algorithmic Impact Assessment",
+              "description": "Deployers of high-risk AI must conduct and document annual algorithmic impact assessments covering bias, accuracy, and fairness metrics.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "CO-R2",
+              "category": "risk_management",
+              "title": "Risk Management Program",
+              "description": "Organizations must implement a documented AI risk management program aligned with NIST AI RMF or equivalent framework.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "CO-R3",
+              "category": "opt_out",
+              "title": "Opt-Out and Appeal Mechanism",
+              "description": "Individuals must have the right to opt out of high-risk AI decisions and appeal adverse decisions made by or with AI assistance.",
+              "severity": "critical",
+              "applies_to_risk_levels": ["high"],
+              "documentation_required": true,
+              "patient_facing": true
+            },
+            {
+              "id": "CO-R4",
+              "category": "disclosure",
+              "title": "Deployer Notification to Developer",
+              "description": "Deployers must notify AI developers of known or suspected algorithmic discrimination within 90 days of discovery.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "CO-R5",
+              "category": "inventory",
+              "title": "AI System Inventory",
+              "description": "Organizations must maintain a current inventory of all high-risk AI systems in use, updated at minimum annually.",
+              "severity": "medium",
+              "applies_to_risk_levels": ["high"],
+              "documentation_required": true,
+              "patient_facing": false
+            }
+          ],
+          "penalties": {
+            "description": "Enforced by Colorado AG; civil penalties vary by violation type",
+            "max_per_violation": null,
+            "enforcement_body": "Colorado Attorney General"
+          },
+          "source_url": "https://leg.colorado.gov/bills/sb24-205",
+          "notes": "Modeled after EU AI Act. Most comprehensive US state AI law. Healthcare is explicitly high-risk."
+        }
+      ]
+    },
+    "illinois": {
+      "display_name": "Illinois",
+      "laws": [
+        {
+          "id": "IL_AIAA",
+          "full_name": "Illinois Artificial Intelligence Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["employers", "healthcare_providers"],
+          "requirements": [
+            {
+              "id": "IL-R1",
+              "category": "bias_audit",
+              "title": "Annual AI Bias Audit",
+              "description": "Employers using AI in employment decisions (including healthcare staffing AI) must conduct annual bias audits by independent third parties.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "IL-R2",
+              "category": "disclosure",
+              "title": "AI Use Notification",
+              "description": "Organizations must notify individuals when AI is used in decisions that significantly affect them.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": true
+            }
+          ],
+          "penalties": {
+            "description": "Up to $500 per violation per day",
+            "max_per_violation": 500,
+            "enforcement_body": "Illinois Department of Labor"
+          },
+          "source_url": "https://www.ilga.gov",
+          "notes": "Focuses heavily on employment-related AI but extends to healthcare HR systems."
+        }
+      ]
+    },
+    "new_york": {
+      "display_name": "New York",
+      "laws": [
+        {
+          "id": "NY_LOCAL_LAW_144",
+          "full_name": "New York City Local Law 144 – AI Hiring Bias Audit",
+          "effective_date": "2023-07-05",
+          "status": "active",
+          "applies_to": ["nyc_employers", "healthcare_entities_in_nyc"],
+          "requirements": [
+            {
+              "id": "NY-R1",
+              "category": "bias_audit",
+              "title": "Bias Audit for Automated Employment Decision Tools",
+              "description": "NYC employers using AI in employment decisions must publish annual independent bias audit results.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "NY-R2",
+              "category": "disclosure",
+              "title": "Notice of Automated Decision Tool Use",
+              "description": "NYC employers must notify candidates and employees when an automated employment decision tool is used to evaluate them.",
+              "severity": "high",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": true
+            }
+          ],
+          "penalties": {
+            "description": "$500 to $1,500 per violation",
+            "max_per_violation": 1500,
+            "enforcement_body": "NYC Department of Consumer and Worker Protection"
+          },
+          "source_url": "https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page",
+          "notes": "NYC-specific. One of the first-in-nation bias audit requirements."
+        }
+      ]
+    },
+    "florida": {
+      "display_name": "Florida",
+      "laws": [
+        {
+          "id": "FL_HB_1459",
+          "full_name": "Florida HB 1459 – Government AI Transparency Act",
+          "effective_date": "2026-01-01",
+          "status": "active",
+          "applies_to": ["state_agencies", "state_funded_healthcare"],
+          "requirements": [
+            {
+              "id": "FL-R1",
+              "category": "transparency",
+              "title": "Government AI Use Transparency",
+              "description": "State agencies must publicly disclose all AI systems in use, their purpose, and accuracy metrics.",
+              "severity": "medium",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": false
+            },
+            {
+              "id": "FL-R2",
+              "category": "disclosure",
+              "title": "Patient Notification of AI in State-Funded Care",
+              "description": "State-funded healthcare facilities must notify patients when AI systems are used in their care decisions.",
+              "severity": "medium",
+              "applies_to_risk_levels": ["high", "medium"],
+              "documentation_required": true,
+              "patient_facing": true
+            }
+          ],
+          "penalties": {
+            "description": "Agency-level enforcement; penalties vary",
+            "max_per_violation": null,
+            "enforcement_body": "Florida AG"
+          },
+          "source_url": "https://www.flsenate.gov",
+          "notes": "Primarily affects state-funded healthcare (Medicaid, state hospitals)."
+        }
+      ]
+    }
+  },
+  "federal": {
+    "laws": [
+      {
+        "id": "HIPAA_AI",
+        "full_name": "HIPAA with AI Addendum – HHS Guidance on AI and PHI",
+        "effective_date": "2024-06-01",
+        "status": "active",
+        "applies_to": ["all_covered_entities", "business_associates_with_ai"],
+        "requirements": [
+          {
+            "id": "FED-HIPAA-R1",
+            "category": "phi_protection",
+            "title": "PHI Must Not Train AI Without Explicit Authorization",
+            "description": "Protected Health Information may not be used to train AI models without explicit patient authorization. De-identification must meet Safe Harbor or Expert Determination standards.",
+            "severity": "critical",
+            "applies_to_risk_levels": ["high", "medium", "low"],
+            "documentation_required": true,
+            "patient_facing": false
+          },
+          {
+            "id": "FED-HIPAA-R2",
+            "category": "baa_requirement",
+            "title": "Business Associate Agreement with AI Vendors",
+            "description": "All AI vendors with access to PHI must have a signed and current Business Associate Agreement (BAA) in place.",
+            "severity": "critical",
+            "applies_to_risk_levels": ["high", "medium"],
+            "documentation_required": true,
+            "patient_facing": false
+          },
+          {
+            "id": "FED-HIPAA-R3",
+            "category": "minimum_necessary",
+            "title": "Minimum Necessary PHI for AI Systems",
+            "description": "AI systems must access only the minimum necessary PHI to perform their function. Bulk data access for AI training requires documented justification.",
+            "severity": "high",
+            "applies_to_risk_levels": ["high", "medium"],
+            "documentation_required": true,
+            "patient_facing": false
+          }
+        ],
+        "source_url": "https://www.hhs.gov/hipaa/for-professionals/privacy/guidance/artificial-intelligence/index.html",
+        "notes": "HHS issued formal guidance in 2024. Every US hospital must comply."
+      },
+      {
+        "id": "CMS_AI_STRATEGY",
+        "full_name": "CMS AI Strategy – Medicare/Medicaid AI Requirements",
+        "effective_date": "2025-01-01",
+        "status": "active",
+        "applies_to": ["medicare_providers", "medicaid_providers", "cms_funded_hospitals"],
+        "requirements": [
+          {
+            "id": "FED-CMS-R1",
+            "category": "clinical_decision_support",
+            "title": "CDS AI Must Meet Evidence Standards",
+            "description": "Clinical Decision Support AI tools used in Medicare/Medicaid settings must meet CMS evidence-based standards and be listed in approved tool registries.",
+            "severity": "high",
+            "applies_to_risk_levels": ["high"],
+            "documentation_required": true,
+            "patient_facing": false
+          },
+          {
+            "id": "FED-CMS-R2",
+            "category": "algorithm_transparency",
+            "title": "Algorithm Transparency for Reimbursement AI",
+            "description": "AI used in billing or prior authorization decisions for Medicare/Medicaid must provide explainable decision outputs auditable by CMS.",
+            "severity": "critical",
+            "applies_to_risk_levels": ["high"],
+            "documentation_required": true,
+            "patient_facing": false
+          },
+          {
+            "id": "FED-CMS-R3",
+            "category": "bias_monitoring",
+            "title": "Equity Monitoring for CMS-Funded AI",
+            "description": "Providers must monitor and report to CMS any evidence of health equity disparities in AI-assisted care delivery.",
+            "severity": "high",
+            "applies_to_risk_levels": ["high", "medium"],
+            "documentation_required": true,
+            "patient_facing": false
+          }
+        ],
+        "source_url": "https://www.cms.gov/priorities/innovation/key-concepts/artificial-intelligence",
+        "notes": "Applies to any provider accepting Medicare or Medicaid — virtually all US hospitals."
+      },
+      {
+        "id": "HHS_AI_SAFETY",
+        "full_name": "HHS AI Safety Program – National Patient Safety Standards",
+        "effective_date": "2025-06-01",
+        "status": "active",
+        "applies_to": ["all_hospitals", "health_systems", "clinical_ai_deployers"],
+        "requirements": [
+          {
+            "id": "FED-HHS-R1",
+            "category": "safety_testing",
+            "title": "Pre-Deployment Safety Testing",
+            "description": "High-risk AI systems must undergo documented pre-deployment safety testing in clinical environments before production use.",
+            "severity": "critical",
+            "applies_to_risk_levels": ["high"],
+            "documentation_required": true,
+            "patient_facing": false
+          },
+          {
+            "id": "FED-HHS-R2",
+            "category": "incident_reporting",
+            "title": "AI Adverse Event Reporting",
+            "description": "Hospitals must report AI-related adverse events to HHS within 30 days. Near-misses are strongly encouraged to be reported.",
+            "severity": "high",
+            "applies_to_risk_levels": ["high", "medium"],
+            "documentation_required": true,
+            "patient_facing": false
+          },
+          {
+            "id": "FED-HHS-R3",
+            "category": "governance",
+            "title": "AI Governance Committee Required",
+            "description": "Health systems with more than 100 beds must have a designated AI governance committee or officer responsible for oversight.",
+            "severity": "medium",
+            "applies_to_risk_levels": ["high", "medium"],
+            "documentation_required": true,
+            "patient_facing": false
+          }
+        ],
+        "source_url": "https://www.hhs.gov/about/news/2024/12/17/hhs-launches-artificial-intelligence-safety-program.html",
+        "notes": "New program from HHS. Voluntary initially but expected to become mandatory for accreditation."
+      }
+    ]
+  },
+  "law_applicability_matrix": {
+    "texas": {
+      "state_laws": ["TRAIGA"],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]
+    },
+    "california": {
+      "state_laws": ["AB_489", "SB_942", "AB_2013"],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]
+    },
+    "colorado": {
+      "state_laws": ["CO_AI_ACT"],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]
+    },
+    "illinois": {
+      "state_laws": ["IL_AIAA"],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]
+    },
+    "new_york": {
+      "state_laws": ["NY_LOCAL_LAW_144"],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]
+    },
+    "florida": {
+      "state_laws": ["FL_HB_1459"],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"]
+    },
+    "default": {
+      "state_laws": [],
+      "federal_laws": ["HIPAA_AI", "CMS_AI_STRATEGY", "HHS_AI_SAFETY"],
+      "note": "Federal laws apply to all US states. State-specific laws listed above for covered states."
+    }
+  }
+}

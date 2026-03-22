@@ -1,0 +1,26 @@
+MRN,ADM_ID,FIRST_NAME,LAST_NAME,AGE,GENDER,ADMISSION_DATE,DISCHARGE_DATE,DEPARTMENT,ICD10_CODE,ICD10_DESC,DRG_CODE,AI_TOOLS_ACTIVE,GOVERNANCE_NOTES
+MRN-99001,ADM-00098,Demo,Patient,58,M,2025-01-15,2025-01-20,ICU,A41.9,Sepsis unspecified organism,871,Epic Sepsis; ChatGPT; Billing AI,No BAA on file for ChatGPT
+MRN-84721,ADM-00142,James,Okafor,67,M,2025-02-14,2025-02-21,Radiology,C34.10,Malignant neoplasm upper lobe bronchus,163,Radiology AI; Billing AI,FDA 510k pending verification
+MRN-63021,ADM-00211,Maria,Santos,72,F,2025-02-20,2025-02-25,Cardiology,I48.0,Paroxysmal atrial fibrillation,308,EHR Analytics; Nuance DAX,
+MRN-51293,ADM-00334,Robert,Chen,54,M,2025-03-01,2025-03-07,Oncology,C50.911,Malignant neoplasm right breast unspecified,582,Radiology AI; Viz AI,
+MRN-29847,ADM-00445,Lisa,Thompson,45,F,2025-03-10,2025-03-11,Emergency,R07.9,Chest pain unspecified,313,Epic Sepsis; ChatGPT,Resident used ChatGPT for differential
+MRN-17432,ADM-00512,Kevin,Martinez,61,M,2025-03-12,2025-03-18,ICU,J96.00,Acute respiratory failure unspecified,207,Epic Sepsis; Billing AI,
+MRN-38201,ADM-00601,Sarah,Johnson,79,F,2025-03-14,2025-03-20,Neurology,I63.50,Cerebral infarction unspecified,061,Viz AI; EHR Analytics,Stroke AI disclosure not documented
+MRN-92034,ADM-00687,Michael,Davis,55,M,2025-03-15,2025-03-16,Emergency,R55,Syncope and collapse,312,,
+MRN-44182,ADM-00743,Patricia,Wilson,68,F,2025-03-16,2025-03-22,Orthopedics,M16.11,Primary osteoarthritis right hip,470,Billing AI; EHR Analytics,No human review on billing codes
+MRN-71923,ADM-00821,Thomas,Anderson,50,M,2025-03-17,2025-03-19,Cardiology,I21.4,Non-ST elevation myocardial infarction,280,Epic Sepsis; EHR Analytics,
+MRN-28731,ADM-00904,Jennifer,Taylor,63,F,2025-03-18,2025-03-24,Oncology,C18.2,Malignant neoplasm ascending colon,329,Radiology AI; Billing AI,
+MRN-55012,ADM-00982,William,Moore,74,M,2025-03-19,2025-03-25,ICU,J18.9,Pneumonia unspecified organism,194,Epic Sepsis; ChatGPT; Ambient,Patient consent for ambient not obtained
+MRN-13847,ADM-01043,Barbara,Jackson,48,F,2025-03-20,2025-03-21,Emergency,S06.0X0A,Concussion without loss of consciousness,100,,
+MRN-60293,ADM-01112,Charles,White,71,M,2025-03-20,2025-03-27,Cardiology,I50.9,Heart failure unspecified,291,Optum; Billing AI; EHR Analytics,Prior auth AI denied claim - no criteria documented
+MRN-82734,ADM-01198,Susan,Harris,66,F,2025-03-21,2025-03-23,Radiology,N40.0,Benign prostatic hyperplasia without symptoms,987,Radiology AI,
+MRN-36501,ADM-01267,Joseph,Martin,52,M,2025-03-21,2025-03-28,Surgery,K80.20,Calculus of gallbladder without cholecystitis,418,Billing AI,
+MRN-74023,ADM-01334,Dorothy,Garcia,83,F,2025-03-22,2025-03-28,Geriatrics,F03.90,Unspecified dementia without behavioral disturbance,056,EHR Analytics; Nuance DAX,
+MRN-19284,ADM-01401,Daniel,Rodriguez,44,M,2025-03-22,2025-03-23,Emergency,T14.90XA,Injury unspecified initial encounter,948,,
+MRN-47831,ADM-01478,Nancy,Lewis,59,F,2025-03-23,2025-03-29,Oncology,C56.1,Malignant neoplasm right ovary,180,Radiology AI; Billing AI; ChatGPT,ChatGPT used for treatment planning - no BAA
+MRN-62910,ADM-01545,Paul,Lee,77,M,2025-03-23,2025-03-30,ICU,N17.9,Acute kidney failure unspecified,682,Epic Sepsis; Optum; Billing AI,
+MRN-31748,ADM-01612,Karen,Walker,41,F,2025-03-24,2025-03-25,Maternity,Z37.0,Single liveborn infant delivered vaginally,807,,
+MRN-85023,ADM-01679,Steven,Hall,65,M,2025-03-24,2025-03-30,Pulmonology,J44.1,COPD with acute exacerbation,190,EHR Analytics; Nuance DAX; Billing AI,Nuance DAX consent not on file
+MRN-43201,ADM-01746,Betty,Allen,70,F,2025-03-25,2025-03-31,Neurology,G30.9,Alzheimers disease unspecified,056,Azure OpenAI; EHR Analytics,Azure OpenAI DPA not verified
+MRN-96712,ADM-01813,Mark,Young,38,M,2025-03-25,2025-03-26,Emergency,S52.501A,Unspecified fracture lower radius,113,,
+MRN-24590,ADM-01880,Dorothy,Hernandez,82,F,2025-03-26,2025-04-02,ICU,I26.99,Other pulmonary embolism without acute cor pulmonale,175,Epic Sepsis; Billing AI; Optum,Prior auth denial - no explainability documented

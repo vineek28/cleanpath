@@ -1,0 +1,6 @@
+MRN,ADM_ID,FIRST_NAME,LAST_NAME,AGE,GENDER,ADMISSION_DATE,DISCHARGE_DATE,DEPARTMENT,ICD10_CODE,ICD10_DESC,DRG_CODE,AI_TOOLS_ACTIVE,GOVERNANCE_NOTES
+MRN-00001,ADM-00001,Jane,Smith,67,F,2025-01-10,2025-01-15,ICU,A41.9,Sepsis unspecified organism,871,Epic Sepsis,
+MRN-00002,ADM-00002,Robert,Johnson,54,M,2025-01-12,2025-01-18,Radiology,C34.10,Malignant neoplasm of upper lobe bronchus,163,Radiology AI CADe,FDA 510k on file
+MRN-00003,ADM-00003,Maria,Garcia,72,F,2025-01-14,2025-01-19,Cardiology,I48.0,Paroxysmal atrial fibrillation,308,EHR Analytics,
+MRN-00004,ADM-00004,James,Williams,45,M,2025-01-15,2025-01-16,Emergency,R07.9,Chest pain unspecified,313,,
+MRN-00005,ADM-00005,Linda,Brown,61,F,2025-01-16,2025-01-22,Oncology,C50.911,Malignant neoplasm right breast,582,Radiology AI CADe; Billing AI,

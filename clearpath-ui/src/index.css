@@ -1,0 +1,141 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white:       #ffffff;
+  --bg:          #f6f9f6;
+  --green:       #15803d;
+  --green2:      #16a34a;
+  --green3:      #22c55e;
+  --green-light: #dcfce7;
+  --green-mid:   #bbf7d0;
+  --green-dim:   rgba(21,128,61,0.08);
+  --dark:        #0c110c;
+  --dark2:       #1a201a;
+  --text:        #0c110c;
+  --text2:       #374151;
+  --text3:       #6b7280;
+  --text4:       #9ca3af;
+  --border:      #e2ebe2;
+  --border2:     #d1ddd1;
+  --card:        #ffffff;
+  --red:         #dc2626;
+  --red-dim:     rgba(220,38,38,0.08);
+  --red-border:  #fecaca;
+  --amber:       #d97706;
+  --amber-dim:   rgba(217,119,6,0.08);
+  --amber-border:#fde68a;
+  --blue:        #2563eb;
+  --blue-dim:    rgba(37,99,235,0.08);
+  --blue-border: #bfdbfe;
+  --font-d: 'Bricolage Grotesque', sans-serif;
+  --font-b: 'Instrument Sans', sans-serif;
+  --font-m: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--white);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 24px,
+    rgba(21,128,61,0.13) 24px,
+    rgba(21,128,61,0.13) 25px
+  );
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Cards and white panels override the body pattern */
+.solid { background-image: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+@keyframes fadeUp    { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn    { from { opacity:0; } to { opacity:1; } }
+@keyframes pulse     { 0%,100%{opacity:1} 50%{opacity:0.45} }
+@keyframes slideInUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+@keyframes slideInLeft { from { opacity:0; transform:translateX(-14px); } to { opacity:1; transform:translateX(0); } }
+@keyframes glowPulse { 0%,100%{box-shadow:0 0 0 0 rgba(21,128,61,0.5);opacity:1} 50%{box-shadow:0 0 0 5px rgba(21,128,61,0);opacity:0.7} }
+@keyframes scanLine  { 0%{transform:translateX(-100%)} 100%{transform:translateX(1200%)} }
+@keyframes flashNew  { 0%{background:#dcfce7} 60%{background:#f0fdf4} 100%{background:#fff} }
+@keyframes scaleIn   { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:scale(1)} }
+@keyframes countIn   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes shimmer   { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+@keyframes spin      { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+select option { background: white; color: #0c110c; }
+
+/* Animated agent dots */
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+  40%            { transform: scale(1);   opacity: 1;   }
+}
+.dot-1 { animation: dotPulse 1.2s ease infinite 0s;    }
+.dot-2 { animation: dotPulse 1.2s ease infinite 0.2s;  }
+.dot-3 { animation: dotPulse 1.2s ease infinite 0.4s;  }
+
+/* Section divider */
+.sec-div {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+  margin: 0;
+}
+
+/* ── Design system upgrades ── */
+
+/* Soft glass cards — removes "UI kit" feel */
+.soft-card {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Section background — not pure white */
+.section-bg {
+  background: linear-gradient(to bottom, rgba(21,128,61,0.015), rgba(21,128,61,0.03));
+}
+
+/* Dashed divider — between sections */
+.dash-div {
+  border: none;
+  border-top: 1px dashed rgba(21,128,61,0.15);
+  margin: 0;
+}
+
+/* Subtle inner divider — inside cards */
+.inner-div {
+  height: 1px;
+  background: rgba(0,0,0,0.05);
+  margin: 16px 0;
+}
+
+/* Right panel items */
+.pipeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.8);
+  transition: all 0.2s;
+}
+
+/* Typography scale */
+.label-xs {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.12em;
+  color: var(--text4);
+  text-transform: uppercase;
+}
